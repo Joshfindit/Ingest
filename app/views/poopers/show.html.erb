@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+      <%= @pooper.name %>
+  </p>
+
+<p>
+  <strong>Email:</strong>
+      <%= @pooper.email %>
+  </p>
+
+<p>
+  <strong>User:</strong>
+      <% @pooper.all.user.each do |user| -%>
+      <%= link_to user.name, user %>
+    <% end -%>
+  </p>
+
+<%= link_to 'Edit', edit_pooper_path(@pooper) %> |
+<%= link_to 'Back', poopers_path %>

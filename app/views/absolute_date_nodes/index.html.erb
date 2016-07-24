@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Absolute Date Nodes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Normalized name</th>
+      <th>Artefact</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @absolute_date_nodes.each do |absolute_date_node| %>
+      <tr>
+      <td><%= absolute_date_node.name %></td>
+        <td><%= absolute_date_node.normalized_name %></td>
+        <% if absolute_date_node.artefact.nil? %>
+          <td>none</td>
+        <% else -%>
+          <% absolute_date_node.artefact.each do |artefact| -%>
+            <%= artefact.methods %>
+            <td><%= link_to artefact.name, artefact %></td>
+          <% end -%>
+        <% end -%>
+        <td><%= link_to 'Show', absolute_date_node %></td>
+        <td><%= link_to 'Edit', edit_absolute_date_node_path(absolute_date_node) %></td>
+        <td><%= link_to 'Destroy', absolute_date_node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Absolute date node', new_absolute_date_node_path %>

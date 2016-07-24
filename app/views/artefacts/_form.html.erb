@@ -1,0 +1,33 @@
+<%= form_for(@artefact) do |f| %>
+  <% if @artefact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artefact.errors.count, "error") %> prohibited this artefact from being saved:</h2>
+
+      <ul>
+      <% @artefact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :external_uuid %><br>
+    <%= f.text_field :external_uuid %>
+  </div>
+  <div class="field">
+    <%= f.label :datetime_occurred_at_id %><br>
+    <%= f.text_field :datetime_occurred_at_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

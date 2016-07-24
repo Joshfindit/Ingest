@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+      <%= @artefact.name %>
+  </p>
+
+<p>
+  <strong>Content:</strong>
+      <%= @artefact.content %>
+  </p>
+
+<p>
+  <strong>External uuid:</strong>
+      <%= @artefact.external_uuid %>
+  </p>
+
+<p>
+  <strong>Datetime occurred at:</strong>
+      <% if @artefact.datetime_occurred_at -%>
+      <% @artefact.datetime_occurred_at.each do |datetime_occurred_at| -%>
+        <%= link_to datetime_occurred_at.name, datetime_occurred_at %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+<%= link_to 'Edit', edit_artefact_path(@artefact) %> |
+<%= link_to 'Back', artefacts_path %>

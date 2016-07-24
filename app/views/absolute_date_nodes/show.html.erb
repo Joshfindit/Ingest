@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+      <%= @absolute_date_node.name %>
+  </p>
+
+<p>
+  <strong>Normalized name:</strong>
+      <%= @absolute_date_node.normalized_name %>
+  </p>
+
+<p>
+  <strong>Artefact:</strong>
+    <% if @absolute_date_node.artefact -%>
+      <% @absolute_date_node.artefact.each do |artefact| -%>
+        <%= link_to artefact.name, artefact %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+<%= link_to 'Edit', edit_absolute_date_node_path(@absolute_date_node) %> |
+<%= link_to 'Back', absolute_date_nodes_path %>

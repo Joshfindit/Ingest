@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Poopers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @poopers.each do |pooper| %>
+      <tr>
+      <td><%= pooper.name %></td>
+        <td><%= pooper.email %></td>
+        <% if !pooper.user.nil? -%>
+          <% pooper.user.each do |user| -%>
+            <td><%= link_to user.name, user %></td>
+          <% end -%>
+        <% else -%>
+          <td>None found</td>
+        <% end -%>
+        <td><%= link_to 'Show', pooper %></td>
+        <td><%= link_to 'Edit', edit_pooper_path(pooper) %></td>
+        <td><%= link_to 'Destroy', pooper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pooper', new_pooper_path %>
