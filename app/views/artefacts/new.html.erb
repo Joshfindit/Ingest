@@ -1,0 +1,15 @@
+<h1>New Artefact</h1>
+
+<%# I'm lazy: I keep some ingest scripts here so they can be easily called %>
+<%#= DayOneEntry.ingestDayOneEntry("./entries/5318E3FE6B4B49458241C8D71613B5F9.doentry") %>
+<%#= DayOneEntry.ingestDayOneFolderOfEntries("./entries/") %>
+<%#= DayOneEntry.ingestDayOneEntry("./entries/E72D53DE971D4B0980ED7AE7158220AE.doentry") %>
+<%#= DayOneEntry.ingestDayOneEntry("./entries/E70C45636F1642A794D33A1BC2C714D7.doentry") %>
+
+<%#= AudioRecording.ingestUnparsedAudioRecording("", "") %>
+
+
+
+<%= render 'form', artefact: @artefact %>
+
+<%= link_to 'Back', artefacts_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui text container">
+  <h1 class="ui dividing header">Quarter</h1>
+</div>
+
+<div class="ui text container">
+      <p>
+      <strong>Name:</strong>
+              <%= @quarter.name %>
+          </p>
+      <p>
+      <strong>Normalized name:</strong>
+              <%= @quarter.normalized_name %>
+          </p>
+      <p>
+      <strong>Quarter:</strong>
+              <%= @quarter.quarter %>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomout:</strong>
+              <% if @quarter.datetimeSemanticZoomOut -%>
+          <% @quarter.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+            <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+          <% end -%>
+        <% end -%>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomin:</strong>
+              <% if @quarter.datetimeSemanticZoomIn -%>
+          <% @quarter.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+            <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+          <% end -%>
+        <% end -%>
+          </p>
+  </div>
+
+<%= link_to 'Edit', edit_quarter_path(@quarter) %> |
+<%= link_to 'Back', quarters_path %>

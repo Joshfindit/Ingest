@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Agents</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+                  <th>Username</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Alias</th>
+                  <th>Details</th>
+                  <th>Normalized name</th>
+                <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @agents.limit(45).each do |agent| %>
+        <tr>
+                                    <td><%= agent.username %></td>
+                                                <td><%= agent.name %></td>
+                                                <td><%= agent.description %></td>
+                                                <td><%= agent.alias %></td>
+                                                <td><%= agent.details %></td>
+                                                <td><%= agent.normalized_name %></td>
+                                <td><%= link_to 'Show', agent %></td>
+          <td><%= link_to 'Edit', edit_agent_path(agent) %></td>
+          <td><%= link_to 'Destroy', agent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Agent', new_agent_path %>
+</div>

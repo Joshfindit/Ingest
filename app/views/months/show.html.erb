@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui text container">
+  <h1 class="ui dividing header">Month</h1>
+</div>
+
+<div class="ui text container">
+      <p>
+      <strong>Name:</strong>
+              <%= @month.name %>
+          </p>
+      <p>
+      <strong>Normalized name:</strong>
+              <%= @month.normalized_name %>
+          </p>
+      <p>
+      <strong>Month:</strong>
+              <%= @month.month %>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomout:</strong>
+              <% if @month.datetimeSemanticZoomOut -%>
+          <% @month.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+            <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+          <% end -%>
+        <% end -%>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomin:</strong>
+              <% if @month.datetimeSemanticZoomIn -%>
+          <% @month.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+            <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+          <% end -%>
+        <% end -%>
+          </p>
+  </div>
+
+<%= link_to 'Edit', edit_month_path(@month) %> |
+<%= link_to 'Back', months_path %>

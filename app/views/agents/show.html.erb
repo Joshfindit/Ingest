@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<%#= cookies[:user_name] = "Joshua Buxton" %>
+Cookie: <%= cookies[:user_name] %>
+<div class="ui text container">
+  <h1 class="ui dividing header">Agent: <%= @agent.name %></h1>
+</div>
+
+<div class="ui text container">
+<br>
+      <p>
+      <strong>Username:</strong>
+              <%= @agent.username %>
+          </p>
+      <p>
+      <strong>Name:</strong>
+              <%= @agent.name %>
+          </p>
+      <p>
+      <strong>Description:</strong>
+              <%= @agent.description %>
+          </p>
+      <p>
+      <strong>Alias:</strong>
+              <%= @agent.alias %>
+          </p>
+      <p>
+      <strong>Details:</strong>
+              <%= @agent.details %>
+          </p>
+      <p>
+      <strong>Normalized name:</strong>
+              <%= @agent.normalized_name %>
+          </p>
+  </div>
+
+<%= link_to 'Edit', edit_agent_path(@agent) %> |
+<%= link_to 'Back', agents_path %>

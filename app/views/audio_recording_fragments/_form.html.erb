@@ -1,0 +1,39 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@audio_recording_fragment) do |f| %>
+      <% if @audio_recording_fragment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@audio_recording_fragment.errors.count, "error") %> prohibited this audio_recording_fragment from being saved:</h2>
+          <ul>
+            <% @audio_recording_fragment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+                        <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </div>
+                                <div class="field">
+            <%= f.label :origionalArtefact_id %><br>
+            <%= f.text_field :origionalArtefact_id %>
+          </div>
+                                <div class="field">
+            <%= f.label :previous_id %><br>
+            <%= f.text_field :previous_id %>
+          </div>
+              
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#artefact_tags')
+  .dropdown()
+;
+</script>

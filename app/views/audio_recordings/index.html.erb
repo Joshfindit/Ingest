@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Audio Recordings</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+                  <th>Name</th>
+                  <th>Md5atsave</th>
+                  <th>Origionalartefactfragments</th>
+                <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @audio_recordings.limit(45).each do |audio_recording| %>
+        <tr>
+          <td><%= audio_recording.name %></td>
+          <td><%= audio_recording.md5AtSave %></td>
+          <td>
+            <% if audio_recording.origionalArtefactFragments %>
+              <% audio_recording.origionalArtefactFragments.each do |origionalArtefactFragments| -%>
+                <%= link_to origionalArtefactFragments.name, origionalArtefactFragments %>
+              <% end -%>
+            <% end -%>
+          </td>
+          <td><%= link_to 'Show', audio_recording %></td>
+          <td><%= link_to 'Edit', edit_audio_recording_path(audio_recording) %></td>
+          <td><%= link_to 'Destroy', audio_recording, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Audio Recording', new_audio_recording_path %>
+</div>

@@ -1,0 +1,6 @@
+<strong>ingestedFileMetadata:</strong>
+<% if thisItem.ingestedFileMetadata.exists? -%>
+  <%= link_to thisItem.ingestedFileMetadata.original_filename, thisItem.ingestedFileMetadata.url %>
+<% else %>
+  Metadata file does not exist.
+<% end -%>

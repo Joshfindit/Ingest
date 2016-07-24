@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui text container">
+  <h1 class="ui dividing header">Second</h1>
+</div>
+
+<div class="ui text container">
+      <p>
+      <strong>Name:</strong>
+              <%= @second.name %>
+          </p>
+      <p>
+      <strong>Normalized name:</strong>
+              <%= @second.normalized_name %>
+          </p>
+      <p>
+      <strong>Second:</strong>
+              <%= @second.second %>
+          </p>
+      <p>
+      <strong>Unixtime:</strong>
+              <%= @second.unixtime %>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomout:</strong>
+              <% if @second.datetimeSemanticZoomOut -%>
+          <% @second.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+            <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+          <% end -%>
+        <% end -%>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomin:</strong>
+              <% if @second.datetimeSemanticZoomIn -%>
+          <% @second.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+            <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+          <% end -%>
+        <% end -%>
+          </p>
+  </div>
+
+<%= link_to 'Edit', edit_second_path(@second) %> |
+<%= link_to 'Back', seconds_path %>

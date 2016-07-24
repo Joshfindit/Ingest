@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Quarters</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+                  <th>Name</th>
+                  <th>Normalized name</th>
+                  <th>Quarter</th>
+                  <th>Datetimesemanticzoomout</th>
+                  <th>Datetimesemanticzoomin</th>
+                <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @quarters.limit(45).each do |quarter| %>
+        <tr>
+                                    <td><%= quarter.name %></td>
+                                                <td><%= quarter.normalized_name %></td>
+                                                <td><%= quarter.quarter %></td>
+                                                <% @quarter.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <% end -%>
+                                                <% @quarter.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+              <% end -%>
+                                <td><%= link_to 'Show', quarter %></td>
+          <td><%= link_to 'Edit', edit_quarter_path(quarter) %></td>
+          <td><%= link_to 'Destroy', quarter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Quarter', new_quarter_path %>
+</div>

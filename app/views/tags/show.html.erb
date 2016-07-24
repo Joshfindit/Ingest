@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui text container">
+  <h1 class="ui dividing header">Tag: <%= @tag.name %></h1>
+
+</div>
+
+<div class="ui text container">
+      <p>
+      <strong>Name:</strong>
+              <%= @tag.name %>
+          </p>
+      <p>
+      <strong>Normalized name:</strong>
+              <%= @tag.normalized_name %>
+          </p>
+      <p>
+      <strong>Tagged:</strong>
+
+        <% if @tag.tagged -%>
+          <table class="ui green table compact">
+            <tbody>
+              <% @tag.tagged.each do |tagged| -%>
+                <tr>
+                  <td><%= link_to tagged.name, tagged %></td>
+                </tr>
+              <% end -%>
+            </tbody>
+          </table>
+        <% end -%>
+       </p>
+  </div>
+
+<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<%= link_to 'Back', tags_path %>

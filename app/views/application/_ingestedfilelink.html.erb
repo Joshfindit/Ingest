@@ -1,0 +1,8 @@
+<% if thisItem.ingestedFile -%>
+  <strong>Ingested file:</strong>
+  <% if thisItem.ingestedFile.exists? %>
+    <%= link_to thisItem.ingestedFile.original_filename, thisItem.ingestedFile.url, :class=>"" %>
+  <% else %>
+    No file found (are you sure the file was stored in this application and not another?)
+  <% end -%>
+<% end -%>

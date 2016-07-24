@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui text container">
+  <h1 class="ui dividing header">Millisecond</h1>
+</div>
+
+<div class="ui text container">
+      <p>
+      <strong>Name:</strong>
+              <%= @millisecond.name %>
+          </p>
+      <p>
+      <strong>Normalized name:</strong>
+              <%= @millisecond.normalized_name %>
+          </p>
+      <p>
+      <strong>Millisecond:</strong>
+              <%= @millisecond.millisecond %>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomout:</strong>
+              <% if @millisecond.datetimeSemanticZoomOut -%>
+          <% @millisecond.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+            <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+          <% end -%>
+        <% end -%>
+          </p>
+  </div>
+
+<%= link_to 'Edit', edit_millisecond_path(@millisecond) %> |
+<%= link_to 'Back', milliseconds_path %>

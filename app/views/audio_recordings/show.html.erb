@@ -1,0 +1,86 @@
+<p id="notice"><%= notice %></p>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.0.52/wavesurfer.min.js"></script>
+<div class="ui container">
+</div>
+<p id="notice"><%= notice %></p>
+
+<div class="ui text container">
+  <h1 class="ui dividing header"><%= @audio_recording.name %></h1>
+
+  <div id="waveform">
+    <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+      <i class="glyphicon glyphicon-play"></i>
+      Play
+    </button>
+  </div>
+  <%= image_tag @audio_recording.ingestedVisualizationFile.url, :class => "ui fluid image" %>
+</div>
+
+<div class="ui text container">
+  <p>
+    <%= render partial: "ingestedfilelink", object: @audio_recording, as: :thisItem %>
+  </p>
+
+  <p>
+    <strong>ingestedFileMetadata:</strong>
+    <% if @audio_recording.ingestedFileMetadata.exists? -%>
+      <%= link_to @audio_recording.ingestedFileMetadata.original_filename, @audio_recording.ingestedFileMetadata.url %>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>ingestedVisualizationFile:</strong>
+    <% if @audio_recording.ingestedVisualizationFile.exists? -%>
+      <%= link_to @audio_recording.ingestedVisualizationFile.original_filename, @audio_recording.ingestedVisualizationFile.url %>
+    <% end -%>
+  </p>
+
+  <p>
+    <%= render partial: "absolutedatetimerecordedatlink", object: @audio_recording, as: :thisItem %>
+  </p>
+
+  <p>
+    <%= render partial: "taglinks", object: @audio_recording, as: :thisItem %>
+  </p>
+
+  <p>
+    <strong>Md5atsave:</strong>
+    <%= @audio_recording.md5AtSave %>
+  </p>
+
+  <p>
+    <strong>Fragments:</strong>
+    <% if @audio_recording.origionalArtefactFragments %>
+        <%#= @audio_recording.origionalArtefactFragments.first.methods %>
+
+      <% @audio_recording.origionalArtefactFragments.each do |origionalArtefactFragment| %>
+        <%#= origionalArtefactFragment.name %>
+        </br><%= link_to origionalArtefactFragment.name, origionalArtefactFragment %>
+        <%#= link_to @artefact.ingestedFile.original_filename, @artefact.ingestedFile.url, :class=>"" %>
+      <% end -%>
+    <% end %>
+  </p>
+</div>
+
+<%= link_to 'Edit', edit_audio_recording_path(@audio_recording) %> |
+<%= link_to 'Back', audio_recordings_path %>
+
+<script>
+var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    backend: 'MediaElement',
+    waveColor: 'violet',
+    progressColor: 'purple'
+  });
+
+  <% if @audio_recording.ingestedFile.exists? -%>
+    <% if @audio_recording.waveformArray %>
+      wavesurfer.load('<%= @audio_recording.ingestedFile.url %>', <%=@audio_recording.waveformArray %>);
+    <% else %>
+      wavesurfer.load('<%= @audio_recording.ingestedFile.url %>');
+    <% end -%>
+  <% end %>
+
+</script>

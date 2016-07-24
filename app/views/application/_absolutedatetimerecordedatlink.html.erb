@@ -1,0 +1,5 @@
+<%#= puts "thisItem: #{thisItem}" %>
+<strong>Datetimerecordedat:</strong>
+<% if thisItem.datetimeRecordedAt -%>
+  <%= link_to thisItem.datetimeRecordedAt.name, "/absolute_date_nodes/#{thisItem.datetimeRecordedAt.id}" %></td>
+<% end -%>

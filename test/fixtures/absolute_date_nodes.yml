@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  normalized_name: MyString
+  artefacts: one
+
+two:
+  name: MyString
+  normalized_name: MyString
+  artefacts: two

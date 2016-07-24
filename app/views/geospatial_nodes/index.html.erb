@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Geospatial Nodes</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+                  <th>Name</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                  <th>geospatialOccurredAt</th>
+                  <th>geospatialRecordedAt</th>
+                <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @geospatial_nodes.limit(45).each do |geospatial_node| %>
+        <tr>
+          <td><%= link_to geospatial_node.name, geospatial_node %></td>
+          <td><%= geospatial_node.latitude %></td>
+          <td><%= geospatial_node.longitude %></td>
+          <td>
+            <% if geospatial_node.geospatialOccurredAt -%>
+              <% geospatial_node.geospatialOccurredAt.limit(8).each do |geospatialOccurredAt| -%>
+                <%= link_to geospatialOccurredAt.name, geospatialOccurredAt %>
+              <% end -%>
+            <% end -%>
+          </td>
+          <td>
+            <% if geospatial_node.geospatialRecordedAt -%>
+              <% geospatial_node.geospatialRecordedAt.limit(8).each do |geospatialRecordedAt| -%>
+                <%= link_to geospatialRecordedAt.name, geospatialRecordedAt %>
+              <% end -%>
+            <% end -%>
+          </td>
+          <td><%= link_to 'Show', geospatial_node %></td>
+          <td><%= link_to 'Edit', edit_geospatial_node_path(geospatial_node) %></td>
+          <td><%= link_to 'Destroy', geospatial_node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <%= link_to 'New Geospatial Node', new_geospatial_node_path %>
+</div>

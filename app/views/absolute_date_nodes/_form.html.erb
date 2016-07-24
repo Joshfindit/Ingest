@@ -1,0 +1,39 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@absolute_date_node) do |f| %>
+      <% if @absolute_date_node.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@absolute_date_node.errors.count, "error") %> prohibited this absolute_date_node from being saved:</h2>
+          <ul>
+            <% @absolute_date_node.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+                        <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </div>
+                                <div class="field">
+            <%= f.label :normalized_name %><br>
+            <%= f.text_field :normalized_name %>
+          </div>
+                                <div class="field">
+            <%= f.label :artefacts_id %><br>
+            <%= f.text_field :artefacts_id %>
+          </div>
+              
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#artefact_tags')
+  .dropdown()
+;
+</script>

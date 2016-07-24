@@ -1,0 +1,43 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@millisecond) do |f| %>
+      <% if @millisecond.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@millisecond.errors.count, "error") %> prohibited this millisecond from being saved:</h2>
+          <ul>
+            <% @millisecond.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+                        <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </div>
+                                <div class="field">
+            <%= f.label :normalized_name %><br>
+            <%= f.text_field :normalized_name %>
+          </div>
+                                <div class="field">
+            <%= f.label :millisecond %><br>
+            <%= f.text_field :millisecond %>
+          </div>
+                                <div class="field">
+            <%= f.label :datetimeSemanticZoomOut_id %><br>
+            <%= f.text_field :datetimeSemanticZoomOut_id %>
+          </div>
+              
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#artefact_tags')
+  .dropdown()
+;
+</script>

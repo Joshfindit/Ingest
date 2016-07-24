@@ -1,0 +1,94 @@
+class AudioRecording < Artefact
+#  include Neo4j::ActiveNode
+#  property :name, type: String
+  property :md5AtSave, type: String
+
+
+  has_neo4jrb_attached_file :ingestedFile
+  validates_attachment_content_type :ingestedFile, content_type: /\Aaudio\/.*\Z/
+  has_neo4jrb_attached_file :ingestedVisualizationFile
+  validates_attachment_content_type :ingestedVisualizationFile, content_type: /\Aimage\/.*\Z/
+
+  ## Ideas for JSON generation:
+  # 1. change all keys and hashes to lowercase
+  # 2. Include more data, such as OS version
+
+  has_many :in, :origionalArtefactFragments, type: :ORIGINAL_AUDIORECORDING, model_class: :AudioRecordingFragment
+
+  ## Note: TIMEZONES
+  # Ruby will automatically find the GMT offset if you use this format:
+  # Time.zone = 'America/Halifax'
+  # Time.zone.parse(String)
+  # Note: Time.zone.parse("121028 215320") will return: 
+    # "Sun, 28 Oct 0012 21:53:20 LMT -04:14" (0012, not 2012) aka -61762427536
+    # When possible, use 4-digit dates
+
+
+  def self.ingestUnparsedAudioRecording(origionalFilename, fullpath)
+    # Check that the referenced file exists
+    if audioRecordingFile = File.open(fullpath)
+      # If it does, bring in the file
+      # Merge the filename by it's name. Merge by name.hash? Probably a good idea
+      audioRecordingNode = AudioRecording.merge(name: origionalFilename)
+      audioRecordingNode.ingestedFile = audioRecordingFile
+      audioRecordingNode.save
+      audioRecordingFile.close
+    else
+      return false
+    end
+  end
+
+  def self.ingestParsedAudioRecording(origionalFilename, fullpath)
+    # Parse JSON aside
+    # Check that the referenced file exists (we assume it's the same basename, (with the ext from the JSON?))
+    # If it does, bring in the file and it's metadata file
+    # Create the reationships between the node and:
+      # It's recording time
+        # .createTree
+      # Is's location
+        # .createTree
+      # It's device
+      # It's creator
+
+    audioRecordingFile = File.open(fullpath)
+    # Merge the filename by it's name. Merge by name.hash? Probably a good idea
+    audioRecordingNode = AudioRecording.merge(name: origionalFilename)
+    audioRecordingNode.ingestedFile = audioRecordingFile
+    audioRecordingNode.save
+    audioRecordingFile.close
+  end
+
+  def self.ingestParsedAudioFolderOfRecordings()
+
+    #jsonIndex = File.join("**", "*.json")
+    # puts jsonIndex ##jsonIndex was phased out. Now it's a json for each snippet and no index file
+
+   # Dir.glob(jsonIndex) {|file|
+      # 'file' is the relative path and filename. As in 'soxflactemp.noconversion/index.json'
+   #   puts file
+   #   ingestParsedAudioRecording(file) #Sends index.json to the parsing function
+      # Each index.json afterwards will be for different folders (hopefully)
+
+      # puts jsonFile.absolute_path
+      # if jsonFileParsed = JSON.parse(jsonFile)
+      #     jsonFileParsed.each do |jsonFileParsedEntry|
+      #         puts jsonFileParsedEntry['file']
+      #         snippetJsonFile = File.read("#{jsonFileParsedEntry['file']}")
+      #     end
+      # end
+   # }
+
+  end
+
+end
+
+class ITunesVoiceMemo < AudioRecording
+  def self.ingestParsediTunesVoiceMemo(origionalFilename, fullpath)
+    voiceMemoRecordingFile = File.open(fullpath)
+    voiceMemoRecordingNode = ITunesVoiceMemo.merge(name: origionalFilename)
+    voiceMemoRecordingNode.ingestedFile = voiceMemoRecordingFile
+    voiceMemoRecordingNode.ingestedMetadataFile = audioRecordingFile    
+    audioRecordingNode.save
+    audioRecordingFile.close
+  end
+end

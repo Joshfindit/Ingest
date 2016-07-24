@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui text container">
+  <h1 class="ui dividing header">Day</h1>
+</div>
+
+<div class="ui text container">
+      <p>
+      <strong>Name:</strong>
+              <%= @day.name %>
+          </p>
+      <p>
+      <strong>Normalized name:</strong>
+              <%= @day.normalized_name %>
+          </p>
+      <p>
+      <strong>Day:</strong>
+              <%= @day.day %>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomout:</strong>
+              <% if @day.datetimeSemanticZoomOut -%>
+          <% @day.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+            <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+          <% end -%>
+        <% end -%>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomin:</strong>
+              <% if @day.datetimeSemanticZoomIn -%>
+          <% @day.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+            <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+          <% end -%>
+        <% end -%>
+          </p>
+  </div>
+
+<%= link_to 'Edit', edit_day_path(@day) %> |
+<%= link_to 'Back', days_path %>

@@ -1,0 +1,6 @@
+<strong>Tags:</strong>
+<% if thisItem.tags -%>
+  <% thisItem.tags.each do |tag| -%>
+    <%= link_to tag.name, tag, :class=>"ui basic button" %>
+  <% end -%>
+<% end -%>

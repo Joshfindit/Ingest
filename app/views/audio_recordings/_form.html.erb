@@ -1,0 +1,49 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@audio_recording) do |f| %>
+      <% if @audio_recording.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@audio_recording.errors.count, "error") %> prohibited this audio_recording from being saved:</h2>
+          <ul>
+            <% @audio_recording.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :md5AtSave %><br>
+        <%= f.text_field :md5AtSave %>
+      </div>
+      <div class="field">
+        <%= f.label :datetimeRecordedAt %><br>
+        <% if @audio_recording.datetimeRecordedAt %>
+        <%# if @audio_recording.ingestedFileTimezone %>
+          <%= f.text_field :datetimeRecordedAt, :value => @audio_recording.datetimeRecordedAt.name %>
+        <% else %>
+          <%#= f.datetime_local_field :datetimeRecordedAt #I wish. But semanticUI does not support it %>
+          <%= f.text_field :datetimeRecordedAt, :value => Time.now.strftime("%Y%m%d_%H%M%S") %>
+        <% end %>
+      </div>
+      <div class="field">
+        <%= f.label :origionalArtefactFragments %><br>
+        <%= f.text_field :origionalArtefactFragments %>
+      </div>
+              
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#artefact_tags')
+  .dropdown()
+;
+</script>

@@ -1,0 +1,125 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@artefact) do |f| %>
+      <% if @artefact.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@artefact.errors.count, "error") %> prohibited this artefact from being saved:</h2>
+          <ul>
+            <% @artefact.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :datetimeRecordedAt %><br>
+        <% if @artefact.ingestedFileTimezone %>
+          <%= f.text_field :datetimeRecordedAt %>
+        <% else %>
+          <%#= f.datetime_local_field :datetimeRecordedAt #I wish. But semanticUI does not support it %>
+          <%= f.text_field :datetimeRecordedAt, :value => Time.now.strftime("%Y%m%d_%H%M%S") %>
+        <% end %>
+
+      </div>
+      <div class="field">
+        <%= f.label :ingestedFileTimezone %><br>
+        <% if @artefact.ingestedFileTimezone %>
+          <%= f.text_field :ingestedFileTimezone %>          
+        <% else %>
+          <%#= f.datetime_local_field :ingestedFileTimezone #I wish. But semanticUI does not support it %>
+          <%= f.text_field :ingestedFileTimezone, :value => "-0300" %>
+        <% end %>
+      </div>
+          <div class="field">
+            <%= f.label :content %><br>
+            <%= f.text_area :content %>
+          </div>
+          <div class="field">
+            <%= f.label :external_uuid %><br>
+            <%= f.text_field :external_uuid %>
+          </div>
+          <div class="field">
+            <%= f.label :external_source %><br>
+            <%= f.text_field :external_source %>
+          </div>
+          <div class="field">
+            <%#= f.label :normalized_name %><br>
+            <%#= f.text_field :normalized_name %>
+          </div>
+          <div class="field">
+            <%= f.label :creator %><br>
+            <% if @artefact.creator %>
+              <%= f.collection_select(:creator, Agent.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select a Creator", :selected => @artefact.creator.id}, html_options = {:class=>"search"}) %>
+            <% end -%>
+          </div>
+
+
+    <div class="field">
+      <%= f.label :tags %>
+      <% if @artefact.tags %>
+        <%= f.collection_select(:tags, Tag.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select tags", :selected => @artefact.tags.map(&:id)}, html_options = {:multiple => true, :class=>"search"}) %>
+      <% end -%>
+    </div>
+	<% if false # Filtering out feilds that are currently hidden %>
+           <div class="field">
+            <%#= f.label :deviceRecordedAt %><br>
+            <%#= f.text_field :deviceRecordedAt %>
+          </div>
+          <div class="field">
+            <%#= f.label :occurredAt %><br>
+            <%#= f.text_field :occurredAt %>
+          </div>
+          <div class="field">
+            <%#= f.label :ingestedAt %><br>
+            <%#= f.text_field :ingestedAt %>
+          </div>
+          <div class="field">
+            <%#= f.label :datetimeRecordedAt %><br>
+            <%#= f.text_field :datetimeRecordedAt %>
+          </div>
+          <div class="field">
+            <%#= f.label :referencesAbsoluteDatetime %><br>
+            <%#= f.text_field :referencesAbsoluteDatetime %>
+          </div>
+          <div class="field">
+            <%= f.label :refersTo %><br>
+            <%= f.text_field :refersTo %>
+          </div>
+        <% end %>
+          <div class="field">
+            <%= f.label :isReferredToBy %><br>
+            <%= f.text_field :isReferredToBy %>
+          </div>
+          <div class="field">
+            <%= f.label :geospatialRecordedAt %><br>
+            <% if @artefact.geospatialRecordedAt %>
+              <%= f.collection_select(:geospatialRecordedAt, GeospatialNode.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select a location", :selected => @artefact.geospatialRecordedAt.id}, html_options = {:class=>"search"}) %>
+            <% end -%>
+          </div>
+          <div class="field">
+            <%#= f.label :editedAt %><br>
+            <%#= f.text_field :editedAt %>
+          </div>
+              
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#artefact_tags')
+  .dropdown()
+;
+$('#artefact_creator')
+  .dropdown()
+;
+$('#artefact_geospatialRecordedAt')
+  .dropdown()
+;
+</script>

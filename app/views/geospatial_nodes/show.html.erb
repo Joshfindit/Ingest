@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui text container">
+  <h1 class="ui dividing header">Geospatial Node</h1>
+</div>
+
+<div class="ui text container">
+      <p>
+      <strong>Name:</strong>
+              <%= @geospatial_node.name %>
+          </p>
+      <p>
+      <strong>Latitude:</strong>
+              <%= @geospatial_node.latitude %>
+          </p>
+      <p>
+      <strong>Longitude:</strong>
+              <%= @geospatial_node.longitude %>
+          </p>
+      <p>
+        <strong>GeospatialSemanticZoomOut:</strong>
+        <% if @geospatial_node.geospatialSemanticZoomOut -%>
+          <%# @geospatial_node.geospatialSemanticZoomOut.each do |geospatialSemanticZoomOut| -%>
+            <%= link_to @geospatial_node.geospatialSemanticZoomOut.name, @geospatial_node.geospatialSemanticZoomOut %>
+          <%# end -%>
+        <% end -%>
+      </p>
+      <p>
+        <strong>GeospatialSemanticZoomIn:</strong>
+        <% if @geospatial_node.geospatialSemanticZoomIn -%>
+          <% @geospatial_node.geospatialSemanticZoomIn.sort { |a,b| a.name <=> b.name }.each do |geospatialSemanticZoomIn| -%>
+            <%= link_to geospatialSemanticZoomIn.name, geospatialSemanticZoomIn %>
+          <% end -%>
+        <% end -%>
+      </p>
+      <p>
+        <strong>geospatialOccurredAt:</strong>
+        <% if @geospatial_node.geospatialOccurredAt -%>
+          <% @geospatial_node.geospatialOccurredAt.each do |geospatialOccurredAt| -%>
+            <%= link_to geospatialOccurredAt.name, geospatialOccurredAt %>
+          <% end -%>
+        <% end -%>
+      </p>
+      <p>
+        <strong>geospatialRecordedAt:</strong>
+        <% if @geospatial_node.geospatialRecordedAt -%>
+          <% @geospatial_node.geospatialRecordedAt.each do |geospatialRecordedAt| -%>
+            <%= link_to geospatialRecordedAt.name, geospatialRecordedAt %>
+          <% end -%>
+        <% end -%>
+      </p>
+  </div>
+
+<%= link_to 'Edit', edit_geospatial_node_path(@geospatial_node) %> |
+<%= link_to 'Back', geospatial_nodes_path %>

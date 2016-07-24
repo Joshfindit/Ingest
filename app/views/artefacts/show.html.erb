@@ -1,0 +1,152 @@
+<p id="notice"><%= notice %></p>
+<%# user = "Joshua Buxton" %>
+<% user = "Jon" %>
+
+<% if @artefact.visible_to(cookies[:user_name]) %>
+  <br>@artefact.visible_to(cookies[:user_name]): <%= @artefact.visible_to(cookies[:user_name]) %><br>
+<div class="ui container">
+  <a class="ui labeled icon button" href="<%= artefacts_path %>">
+    <i class="up arrow icon"></i>
+    Up
+  </a>
+  <a class="ui basic icon button" href="<%= edit_artefact_path(@artefact) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui text container">
+  <h1 class="ui dividing header"><%= @artefact.name %></h1>
+      <p></p>
+        <h3>Content:</h3>
+        <% if @artefact.content %>
+        <%= markdown(@artefact.content) %>
+        <% end %>
+      </p>
+      <p>
+        <strong>External uuid:</strong>
+        <%= @artefact.external_uuid %>
+      </p>
+      <p>
+        <strong>External source:</strong>
+        <%= @artefact.external_source %>
+      </p>
+      <p>
+        <strong>Normalized name:</strong>
+        <%= @artefact.normalized_name %>
+      </p>
+      <p>
+        <strong>Paperclip (ingestedFile):</strong><br>
+        @artefact.ingestedFile.url: <%= @artefact.ingestedFile.url %><br>
+        URI.join(request.url, @artefact.ingestedFile.url): <%= URI.join(request.url, @artefact.ingestedFile.url) %><br>
+        @artefact.ingestedFile.path: <%= @artefact.ingestedFile.path %><br>
+        File.basename(@artefact.ingestedFile.path): <%= File.basename(@artefact.ingestedFile.path) %><br>
+        File.basename(@artefact.ingestedFile.path, ".*"): <%= File.basename(@artefact.ingestedFile.path, ".*") %><br>
+      </p>
+      <p>
+        <strong>Creator:</strong>
+        <% if @artefact.creator -%>
+          <%= link_to @artefact.creator.name, @artefact.creator %>
+        <% end -%>
+      </p>
+      <p>
+        <%= render partial: "taglinks", object: @artefact, as: :thisItem %>
+      </p>
+
+
+      <% if false #deviceRecordedAt not fleshed out yet %>
+      <p>  
+        <strong>Devicerecordedat:</strong>
+        <% if @artefact.deviceRecordedAt -%>
+          <% @artefact.deviceRecordedAt.each do |deviceRecordedAt| -%>
+            <%= link_to deviceRecordedAt.name, deviceRecordedAt %>
+          <% end -%>
+        <% end -%>
+      </p>
+      <p>
+        <strong>Occurredat:</strong>
+        <% if @artefact.occurredAt -%>
+          <% @artefact.occurredAt.each do |occurredAt| -%>
+            <%= link_to occurredAt.name, occurredAt %>
+          <% end -%>
+        <% end -%>
+      </p>
+      <p>
+        <strong>Ingestedat:</strong>
+        <% if @artefact.ingestedAt -%>
+          <% @artefact.ingestedAt.each do |ingestedAt| -%>
+            <%= link_to ingestedAt.name, ingestedAt %>
+          <% end -%>
+        <% end -%>
+      </p>
+      <% end %>
+
+      <p>
+        <%= render partial: "absolutedatetimerecordedatlink", object: @artefact, as: :thisItem %>
+      </p>
+
+      <p>
+        <%= render partial: "absolutedatetimeoccurredatlink", object: @artefact, as: :thisItem %>
+      </p>
+
+      <% if false %>
+      <p>
+        <strong>Referencesabsolutedatetime:</strong>
+        <% if @artefact.referencesAbsoluteDatetime -%>
+          <% @artefact.referencesAbsoluteDatetime.each do |referencesAbsoluteDatetime| -%>
+            <%= link_to referencesAbsoluteDatetime.name, referencesAbsoluteDatetime %>
+          <% end -%>
+        <% end -%>
+      </p>
+      <% end %>
+
+      <p>
+        <strong>Refersto:</strong>
+        <% if @artefact.refersTo -%>
+          <% @artefact.refersTo.each do |refersTo| -%>
+            <%= link_to refersTo.name, refersTo %>
+          <% end -%>
+        <% end -%>
+      </p>
+      <p>
+      <strong>Isreferredtoby:</strong>
+        <% if @artefact.isReferredToBy -%>
+          <% @artefact.isReferredToBy.each do |isReferredToBy| -%>
+            <%= link_to isReferredToBy.name, isReferredToBy %>
+          <% end -%>
+        <% end -%>
+      </p>
+      <p>
+        <strong>(Notable?) Snippets:</strong>
+        <% if @artefact.snippets -%>
+          <% @artefact.snippets.each do |snippet| -%>
+            <%= link_to snippet.name, snippet %>
+          <% end -%>
+        <% end -%>
+      </p>
+
+      <p>
+        <%= render partial: "ingestedfilelink", object: @artefact, as: :thisItem %>
+      </p>
+
+      <p>
+        <%= render partial: "ingestedfilemetadatalink", object: @artefact, as: :thisItem %>
+      </p>
+      <p>
+        <%= render partial: "geospatialrecordedatlink", object: @artefact, as: :thisItem %>
+      </p>
+      <% if false %>
+        <p>
+        <strong>Editedat:</strong>
+        <% if @artefact.editedAt -%>
+          <% @artefact.editedAt.each do |editedAt| -%>
+            <%= link_to editedAt.name, editedAt %>
+          <% end -%>
+        <% end -%>
+        </p>
+      <% end %>
+  </div>
+
+<% else %>
+Permission Denied
+<% end %>

@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Milliseconds</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+                  <th>Name</th>
+                  <th>Normalized name</th>
+                  <th>Millisecond</th>
+                  <th>Datetimesemanticzoomout</th>
+                <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @milliseconds.limit(45).each do |millisecond| %>
+        <tr>
+                                    <td><%= millisecond.name %></td>
+                                                <td><%= millisecond.normalized_name %></td>
+                                                <td><%= millisecond.millisecond %></td>
+                                                <% @millisecond.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <% end -%>
+                                <td><%= link_to 'Show', millisecond %></td>
+          <td><%= link_to 'Edit', edit_millisecond_path(millisecond) %></td>
+          <td><%= link_to 'Destroy', millisecond, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Millisecond', new_millisecond_path %>
+</div>

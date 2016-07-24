@@ -1,0 +1,47 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@geospatial_node) do |f| %>
+      <% if @geospatial_node.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@geospatial_node.errors.count, "error") %> prohibited this geospatial_node from being saved:</h2>
+          <ul>
+            <% @geospatial_node.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+                        <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </div>
+                                <div class="field">
+            <%= f.label :latitude %><br>
+            <%= f.text_field :latitude %>
+          </div>
+                                <div class="field">
+            <%= f.label :longitude %><br>
+            <%= f.text_field :longitude %>
+          </div>
+                                <div class="field">
+            <%= f.label :geospatialSemanticZoomOut_id %><br>
+            <%= f.text_field :geospatialSemanticZoomOut_id %>
+          </div>
+                                <div class="field">
+            <%= f.label :atCoordinates_id %><br>
+            <%= f.text_field :atCoordinates_id %>
+          </div>
+              
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#artefact_tags')
+  .dropdown()
+;
+</script>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Absolute Date Nodes</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+                  <th>Name</th>
+                  <th>Normalized name</th>
+                  <th>Artefacts</th>
+                <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @absolute_date_nodes.limit(45).each do |absolute_date_node| %>
+        <tr>
+          <td><%= absolute_date_node.name %></td>
+          <td><%= absolute_date_node.normalized_name %></td>
+          <td><% absolute_date_node.artefacts.each do |artefacts| -%>
+            <%= link_to artefacts.name, artefacts %>
+          <% end -%></td>
+          <td><%= link_to 'Show', "/absolute_date_nodes/#{absolute_date_node.id}" %></td>
+          <td><%= link_to 'Edit', edit_absolute_date_node_path(absolute_date_node) %></td>
+          <td><%= link_to 'Destroy', absolute_date_node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Absolute Date Node', new_absolute_date_node_path %>
+</div>

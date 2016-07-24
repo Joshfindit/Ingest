@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui text container">
+  <h1 class="ui dividing header">Minute</h1>
+</div>
+
+<div class="ui text container">
+      <p>
+      <strong>Name:</strong>
+              <%= @minute.name %>
+          </p>
+      <p>
+      <strong>Normalized name:</strong>
+              <%= @minute.normalized_name %>
+          </p>
+      <p>
+      <strong>Minute:</strong>
+              <%= @minute.minute %>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomout:</strong>
+              <% if @minute.datetimeSemanticZoomOut -%>
+          <% @minute.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+            <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+          <% end -%>
+        <% end -%>
+          </p>
+      <p>
+      <strong>Datetimesemanticzoomin:</strong>
+              <% if @minute.datetimeSemanticZoomIn -%>
+          <% @minute.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+            <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+          <% end -%>
+        <% end -%>
+          </p>
+  </div>
+
+<%= link_to 'Edit', edit_minute_path(@minute) %> |
+<%= link_to 'Back', minutes_path %>

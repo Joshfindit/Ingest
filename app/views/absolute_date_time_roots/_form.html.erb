@@ -1,0 +1,31 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@absolute_date_time_root) do |f| %>
+      <% if @absolute_date_time_root.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@absolute_date_time_root.errors.count, "error") %> prohibited this absolute_date_time_root from being saved:</h2>
+          <ul>
+            <% @absolute_date_time_root.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+                        <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </div>
+              
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#artefact_tags')
+  .dropdown()
+;
+</script>

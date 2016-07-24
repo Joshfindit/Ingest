@@ -1,0 +1,6 @@
+development:
+  type: server_db
+  url: http://neo4j:neo4j@localhost:7474
+test:
+  type: server_db
+  url: http://neo4j:neo4j@localhost:7474

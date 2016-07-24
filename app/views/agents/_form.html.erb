@@ -1,0 +1,51 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@agent) do |f| %>
+      <% if @agent.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@agent.errors.count, "error") %> prohibited this agent from being saved:</h2>
+          <ul>
+            <% @agent.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+                        <div class="field">
+            <%= f.label :username %><br>
+            <%= f.text_field :username %>
+          </div>
+                                <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </div>
+                                <div class="field">
+            <%= f.label :description %><br>
+            <%= f.text_field :description %>
+          </div>
+                                <div class="field">
+            <%= f.label :alias %><br>
+            <%= f.text_field :alias %>
+          </div>
+                                <div class="field">
+            <%= f.label :details %><br>
+            <%= f.text_field :details %>
+          </div>
+                                <div class="field">
+            <%= f.label :normalized_name %><br>
+            <%= f.text_field :normalized_name %>
+          </div>
+              
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#artefact_tags')
+  .dropdown()
+;
+</script>

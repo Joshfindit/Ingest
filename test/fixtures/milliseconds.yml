@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  normalized_name: MyString
+  millisecond: MyString
+  datetimeSemanticZoomOut: one
+
+two:
+  name: MyString
+  normalized_name: MyString
+  millisecond: MyString
+  datetimeSemanticZoomOut: two

@@ -1,0 +1,47 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@year) do |f| %>
+      <% if @year.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@year.errors.count, "error") %> prohibited this year from being saved:</h2>
+          <ul>
+            <% @year.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+                        <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name %>
+          </div>
+                                <div class="field">
+            <%= f.label :normalized_name %><br>
+            <%= f.text_field :normalized_name %>
+          </div>
+                                <div class="field">
+            <%= f.label :year %><br>
+            <%= f.text_field :year %>
+          </div>
+                                <div class="field">
+            <%= f.label :datetimeSemanticZoomOut_id %><br>
+            <%= f.text_field :datetimeSemanticZoomOut_id %>
+          </div>
+                                <div class="field">
+            <%= f.label :datetimeSemanticZoomIn_id %><br>
+            <%= f.text_field :datetimeSemanticZoomIn_id %>
+          </div>
+              
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('#artefact_tags')
+  .dropdown()
+;
+</script>

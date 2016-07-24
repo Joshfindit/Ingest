@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Months</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+                  <th>Name</th>
+                  <th>Normalized name</th>
+                  <th>Month</th>
+                  <th>Datetimesemanticzoomout</th>
+                  <th>Datetimesemanticzoomin</th>
+                <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @months.limit(45).each do |month| %>
+        <tr>
+                                    <td><%= month.name %></td>
+                                                <td><%= month.normalized_name %></td>
+                                                <td><%= month.month %></td>
+                                                <% @month.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <% end -%>
+                                                <% @month.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+              <% end -%>
+                                <td><%= link_to 'Show', month %></td>
+          <td><%= link_to 'Edit', edit_month_path(month) %></td>
+          <td><%= link_to 'Destroy', month, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Month', new_month_path %>
+</div>

@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Artefacts</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+                  <th>Name</th>
+                  <th>Content</th>
+                  <th>External source</th>
+                  <th>Creator</th>
+                  <th>Tags</th>
+                  <th>Refersto</th>
+                  <th>Isreferredtoby</th>
+                  <th>Geospatialrecordedat</th>
+                <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @artefacts.limit(45).each do |artefact| %>
+        <tr>
+          <td><%= link_to artefact.name, artefact %></td>
+          <td><%= truncate(artefact.content, :length => 30, :separator => ' ') %></td>
+          <td><%= artefact.external_source %></td>
+          <td><% if !artefact.creator.nil? -%>
+            <%= link_to artefact.creator.name, artefact.creator %>
+          <% end -%></td>
+          <td><% artefact.tags.each do |tags| -%>
+            <%= link_to tags.name, tags %>
+          <% end -%></td>
+          <td><% artefact.refersTo.each do |refersTo| -%>
+            <%= link_to refersTo.name, refersTo %>
+          <% end -%></td>
+          <td><% artefact.isReferredToBy.each do |isReferredToBy| -%>
+            <%= link_to isReferredToBy.name, isReferredToBy %>
+          <% end -%></td>
+          <td><% if !artefact.geospatialRecordedAt.nil? -%>
+            <%= link_to artefact.geospatialRecordedAt.name, artefact.geospatialRecordedAt %>
+          <% end -%></td>
+          <td><%= link_to 'Show', artefact %></td>
+          <td><%= link_to 'Edit', edit_artefact_path(artefact) %></td>
+          <td><%= link_to 'Destroy', artefact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Artefact', new_artefact_path %>
+</div>

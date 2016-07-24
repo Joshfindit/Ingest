@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Minutes</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+                  <th>Name</th>
+                  <th>Normalized name</th>
+                  <th>Minute</th>
+                  <th>Datetimesemanticzoomout</th>
+                  <th>Datetimesemanticzoomin</th>
+                <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @minutes.limit(45).each do |minute| %>
+        <tr>
+                                    <td><%= minute.name %></td>
+                                                <td><%= minute.normalized_name %></td>
+                                                <td><%= minute.minute %></td>
+                                                <% @minute.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <% end -%>
+                                                <% @minute.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+              <% end -%>
+                                <td><%= link_to 'Show', minute %></td>
+          <td><%= link_to 'Edit', edit_minute_path(minute) %></td>
+          <td><%= link_to 'Destroy', minute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Minute', new_minute_path %>
+</div>
