@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  latitude: MyString
+  longitude: MyString
+  geospatialSemanticZoomOut: one
+  geospatialSemanticZoomIn: one
+  geospatialOccurredAt: one
+  geospatialRecordedAt: one
+
+two:
+  name: MyString
+  latitude: MyString
+  longitude: MyString
+  geospatialSemanticZoomOut: two
+  geospatialSemanticZoomIn: two
+  geospatialOccurredAt: two
+  geospatialRecordedAt: two

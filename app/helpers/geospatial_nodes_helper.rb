@@ -1,0 +1,2 @@
+module GeospatialNodesHelper
+end

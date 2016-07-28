@@ -1,0 +1,61 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@minute) do |f| %>
+      <% if @minute.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@minute.errors.count, "error") %> prohibited this minute from being saved:</h2>
+          <ul>
+            <% @minute.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
+            <div class="field">
+              <%= f.label :name %><br>
+              <%= f.text_field :name %>
+            </div>
+          
+  
+
+            <div class="field">
+              <%= f.label :minute %><br>
+              <%= f.text_field :minute %>
+            </div>
+          
+  
+
+         
+            <div class="field">
+              <%= f.label :datetimeSemanticZoomOut_id %><br>
+              
+              # Edit the Class.all.sort to the Class name of the connected node (such as `GeospatialNode.all.sort`)
+              <%= f.collection_select(:datetimeSemanticZoomOut, Class.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select an Item", :selected => @minute.datetimeSemanticZoomOut.map(&:id)}, html_options = {:multiple => true, :class=>"search"}) %>
+            </div>
+
+  
+
+         
+            <div class="field">
+              <%= f.label :datetimeSemanticZoomIn_id %><br>
+              
+              # Edit the Class.all.sort to the Class name of the connected node (such as `GeospatialNode.all.sort`)
+              <%= f.collection_select(:datetimeSemanticZoomIn, Class.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select an Item", :selected => @minute.datetimeSemanticZoomIn.map(&:id)}, html_options = {:multiple => true, :class=>"search"}) %>
+            </div>
+
+  
+
+      <div class="actions">
+        <%= f.submit html_options = {:class=>"ui button"} %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('.search')
+  .dropdown()
+;
+</script>

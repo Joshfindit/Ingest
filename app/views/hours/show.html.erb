@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui">
+  <a class="ui labeled icon button" href="<%= hours_path %>">
+    <i class="up arrow icon"></i>
+    List Hours
+  </a>
+  <a class="ui basic icon button" href="<%= edit_hour_path(@hour) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui vertical masthead center aligned segment">
+  <h1 class="ui header">Hour</h1>
+</div>
+
+<div class="ui text container">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @hour.name -%>
+  </p>
+
+  <p>
+    <strong>Hour:</strong>
+    <%= @hour.hour -%>
+  </p>
+
+  <p>
+    <strong>Datetimesemanticzoomout:</strong>
+    <% if !@hour.datetimeSemanticZoomOut.nil? -%>
+      <% @hour.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+        <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Datetimesemanticzoomin:</strong>
+    <% if !@hour.datetimeSemanticZoomIn.nil? -%>
+      <% @hour.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+        <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+      <% end -%>
+    <% end -%>
+  </p>
+</div>

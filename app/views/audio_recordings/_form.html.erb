@@ -1,0 +1,65 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@audio_recording) do |f| %>
+      <% if @audio_recording.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@audio_recording.errors.count, "error") %> prohibited this audio_recording from being saved:</h2>
+          <ul>
+            <% @audio_recording.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
+            <div class="field">
+              <%= f.label :name %><br>
+              <%= f.text_field :name %>
+            </div>
+          
+  
+
+            <div class="field">
+              <%= f.label :md5AtSave %><br>
+              <%= f.text_field :md5AtSave %>
+            </div>
+          
+  
+
+            <div class="field">
+              <%= f.label :waveformArray %><br>
+              <%= f.text_field :waveformArray %>
+            </div>
+          
+  
+
+            <div class="field">
+              <%= f.label :durationInSeconds %><br>
+              <%= f.number_field :durationInSeconds %>
+            </div>
+          
+  
+
+         
+            <div class="field">
+              <%= f.label :origionalArtefactFragments_id %><br>
+              
+              # Edit the Class.all.sort to the Class name of the connected node (such as `GeospatialNode.all.sort`)
+              <%= f.collection_select(:origionalArtefactFragments, Class.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select an Item", :selected => @audio_recording.origionalArtefactFragments.map(&:id)}, html_options = {:multiple => true, :class=>"search"}) %>
+            </div>
+
+  
+
+      <div class="actions">
+        <%= f.submit html_options = {:class=>"ui button"} %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('.search')
+  .dropdown()
+;
+</script>

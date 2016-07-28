@@ -1,0 +1,82 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Geospatial Nodes</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Geospatialsemanticzoomout</th>
+        <th>Geospatialsemanticzoomin</th>
+        <th>Geospatialoccurredat</th>
+        <th>Geospatialrecordedat</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @geospatial_nodes.limit(45).each do |geospatial_node| %>
+        <tr>
+
+
+          <td>
+              <%= link_to geospatial_node.name, geospatial_node %>
+          </td>
+
+          <td>
+            <%- if !geospatial_node.latitude.nil? %>
+              <%= geospatial_node.latitude %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !geospatial_node.longitude.nil? %>
+              <%= geospatial_node.longitude %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !geospatial_node.geospatialSemanticZoomOut.empty? %>
+              <%- geospatial_node.geospatialSemanticZoomOut.each do |geospatialSemanticZoomOut| -%>
+                <%= link_to geospatialSemanticZoomOut.name, geospatialSemanticZoomOut %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !geospatial_node.geospatialSemanticZoomIn.empty? %>
+              <%- geospatial_node.geospatialSemanticZoomIn.each do |geospatialSemanticZoomIn| -%>
+                <%= link_to geospatialSemanticZoomIn.name, geospatialSemanticZoomIn %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !geospatial_node.geospatialOccurredAt.empty? %>
+              <%- geospatial_node.geospatialOccurredAt.each do |geospatialOccurredAt| -%>
+                <%= link_to geospatialOccurredAt.name, geospatialOccurredAt %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !geospatial_node.geospatialRecordedAt.empty? %>
+              <%- geospatial_node.geospatialRecordedAt.each do |geospatialRecordedAt| -%>
+                <%= link_to geospatialRecordedAt.name, geospatialRecordedAt %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+          <td><%= link_to 'Edit', edit_geospatial_node_path(geospatial_node) %></td>
+          <td><%= link_to 'Destroy', geospatial_node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Geospatial Node', new_geospatial_node_path %>
+</div>

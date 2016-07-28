@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  md5AtSave: MyString
+  waveformArray: MyString
+  durationInSeconds: 1
+  origionalArtefactFragments: one
+
+two:
+  name: MyString
+  md5AtSave: MyString
+  waveformArray: MyString
+  durationInSeconds: 1
+  origionalArtefactFragments: two

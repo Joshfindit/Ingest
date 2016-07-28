@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  second: MyString
+  unixtime: 
+  datetimeSemanticZoomOut: one
+  datetimeSemanticZoomIn: one
+
+two:
+  name: MyString
+  second: MyString
+  unixtime: 
+  datetimeSemanticZoomOut: two
+  datetimeSemanticZoomIn: two

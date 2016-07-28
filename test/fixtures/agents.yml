@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  alias: MyString
+  details: MyText
+  artefacts: one
+
+two:
+  name: MyString
+  description: MyText
+  alias: MyString
+  details: MyText
+  artefacts: two

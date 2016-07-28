@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Audio Recording Fragments</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Origionalartefact</th>
+        <th>Previous</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @audio_recording_fragments.limit(45).each do |audio_recording_fragment| %>
+        <tr>
+
+
+          <td>
+              <%= link_to audio_recording_fragment.name, audio_recording_fragment %>
+          </td>
+
+          <td>
+            <%- if !audio_recording_fragment.origionalArtefact.empty? %>
+              <%- audio_recording_fragment.origionalArtefact.each do |origionalArtefact| -%>
+                <%= link_to origionalArtefact.name, origionalArtefact %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !audio_recording_fragment.previous.empty? %>
+              <%- audio_recording_fragment.previous.each do |previous| -%>
+                <%= link_to previous.name, previous %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+          <td><%= link_to 'Edit', edit_audio_recording_fragment_path(audio_recording_fragment) %></td>
+          <td><%= link_to 'Destroy', audio_recording_fragment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Audio Recording Fragment', new_audio_recording_fragment_path %>
+</div>

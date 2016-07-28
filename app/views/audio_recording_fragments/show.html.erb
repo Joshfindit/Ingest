@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui">
+  <a class="ui labeled icon button" href="<%= audio_recording_fragments_path %>">
+    <i class="up arrow icon"></i>
+    List Audio Recording Fragments
+  </a>
+  <a class="ui basic icon button" href="<%= edit_audio_recording_fragment_path(@audio_recording_fragment) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui vertical masthead center aligned segment">
+  <h1 class="ui header">Audio Recording Fragment</h1>
+</div>
+
+<div class="ui text container">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @audio_recording_fragment.name -%>
+  </p>
+
+  <p>
+    <strong>Origionalartefact:</strong>
+    <% if !@audio_recording_fragment.origionalArtefact.nil? -%>
+      <% @audio_recording_fragment.origionalArtefact.each do |origionalArtefact| -%>
+        <%= link_to origionalArtefact.name, origionalArtefact %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Previous:</strong>
+    <% if !@audio_recording_fragment.previous.nil? -%>
+      <% @audio_recording_fragment.previous.each do |previous| -%>
+        <%= link_to previous.name, previous %>
+      <% end -%>
+    <% end -%>
+  </p>
+</div>

@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Audio Recordings</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Md5atsave</th>
+        <th>Waveformarray</th>
+        <th>Durationinseconds</th>
+        <th>Origionalartefactfragments</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @audio_recordings.limit(45).each do |audio_recording| %>
+        <tr>
+
+
+          <td>
+              <%= link_to audio_recording.name, audio_recording %>
+          </td>
+
+          <td>
+            <%- if !audio_recording.md5AtSave.nil? %>
+              <%= audio_recording.md5AtSave %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !audio_recording.waveformArray.nil? %>
+              <%= audio_recording.waveformArray %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !audio_recording.durationInSeconds.nil? %>
+              <%= audio_recording.durationInSeconds %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !audio_recording.origionalArtefactFragments.empty? %>
+              <%- audio_recording.origionalArtefactFragments.each do |origionalArtefactFragments| -%>
+                <%= link_to origionalArtefactFragments.name, origionalArtefactFragments %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+          <td><%= link_to 'Edit', edit_audio_recording_path(audio_recording) %></td>
+          <td><%= link_to 'Destroy', audio_recording, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Audio Recording', new_audio_recording_path %>
+</div>

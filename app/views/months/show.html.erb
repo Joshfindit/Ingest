@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui">
+  <a class="ui labeled icon button" href="<%= months_path %>">
+    <i class="up arrow icon"></i>
+    List Months
+  </a>
+  <a class="ui basic icon button" href="<%= edit_month_path(@month) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui vertical masthead center aligned segment">
+  <h1 class="ui header">Month</h1>
+</div>
+
+<div class="ui text container">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @month.name -%>
+  </p>
+
+  <p>
+    <strong>Month:</strong>
+    <%= @month.month -%>
+  </p>
+
+  <p>
+    <strong>Datetimesemanticzoomout:</strong>
+    <% if !@month.datetimeSemanticZoomOut.nil? -%>
+      <% @month.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+        <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Datetimesemanticzoomin:</strong>
+    <% if !@month.datetimeSemanticZoomIn.nil? -%>
+      <% @month.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+        <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+      <% end -%>
+    <% end -%>
+  </p>
+</div>

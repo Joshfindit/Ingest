@@ -1,0 +1,2 @@
+This app is designed to connect to a remote Neo4j instance.
+You are welcome to install Neo4j locally using the neo4jrb rake tasks, but I won't be testing or considering it as that kind of install does not scale.

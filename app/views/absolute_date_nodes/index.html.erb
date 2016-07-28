@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Absolute Date Nodes</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Artefacts</th>
+        <th>Datetimesemanticzoomout</th>
+        <th>Datetimesemanticzoomin</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%# @absolute_date_nodes.limit(45).each do |absolute_date_node| %>
+      <% Year.all.sort { |a,b| a.name <=> b.name }.each do |absolute_date_node| %>
+        <tr>
+          <td>
+              <%= link_to absolute_date_node.name, "/absolute_date_nodes/#{absolute_date_node.id}" %>
+          </td>
+
+          <td>
+            <%- if !absolute_date_node.artefacts.empty? %>
+              <%- absolute_date_node.artefacts.each do |artefacts| -%>
+                <%= link_to artefacts.name, artefacts %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+
+          <td>
+            <%- if !absolute_date_node.datetimeSemanticZoomOut.nil? %>
+              <%= link_to absolute_date_node.datetimeSemanticZoomOut.name, "/absolute_date_nodes/#{absolute_date_node.datetimeSemanticZoomOut.id}" %>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !absolute_date_node.datetimeSemanticZoomIn.empty? %>
+              <%- absolute_date_node.datetimeSemanticZoomIn.sort { |a,b| a.name <=> b.name }.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, "/absolute_date_nodes/#{datetimeSemanticZoomIn.id}" %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td><%= link_to 'Edit', edit_absolute_date_node_path(absolute_date_node) %></td>
+          <td><%= link_to 'Destroy', absolute_date_node, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Absolute Date Node', new_absolute_date_node_path %>
+</div>

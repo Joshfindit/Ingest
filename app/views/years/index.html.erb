@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Years</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Year</th>
+        <th>Datetimesemanticzoomout</th>
+        <th>Datetimesemanticzoomin</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @years.limit(45).each do |year| %>
+        <tr>
+
+
+          <td>
+              <%= link_to year.name, year %>
+          </td>
+
+          <td>
+            <%- if !year.year.nil? %>
+              <%= year.year %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !year.datetimeSemanticZoomOut.empty? %>
+              <%- year.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !year.datetimeSemanticZoomIn.empty? %>
+              <%- year.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+          <td><%= link_to 'Edit', edit_year_path(year) %></td>
+          <td><%= link_to 'Destroy', year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Year', new_year_path %>
+</div>

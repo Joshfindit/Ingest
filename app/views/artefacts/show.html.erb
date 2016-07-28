@@ -1,0 +1,164 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui">
+  <a class="ui labeled icon button" href="<%= artefacts_path %>">
+    <i class="up arrow icon"></i>
+    List Artefacts
+  </a>
+  <a class="ui basic icon button" href="<%= edit_artefact_path(@artefact) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui vertical masthead center aligned segment">
+  <h1 class="ui header">Artefact</h1>
+</div>
+
+<div class="ui text container">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @artefact.name -%>
+  </p>
+
+  <p>
+    <strong>Abstract:</strong>
+    <%= @artefact.abstract -%>
+  </p>
+
+  <p>
+    <strong>Content:</strong>
+    <%= markdown(@artefact.content) if @artefact.content -%>
+  </p>
+
+  <p>
+    <strong>External uuid:</strong>
+    <%= @artefact.external_uuid -%>
+  </p>
+
+  <p>
+    <strong>External source:</strong>
+    <%= @artefact.external_source -%>
+  </p>
+
+  <p>
+    <strong>Creator:</strong>
+    <% if !@artefact.creator.nil? -%>
+      <% @artefact.creator.each do |creator| -%>
+        <%= link_to creator.name, creator %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Tags:</strong>
+    <% if !@artefact.tags.nil? -%>
+      <% @artefact.tags.each do |tags| -%>
+        <%= link_to tags.name, tags %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Snippets:</strong>
+    <% if !@artefact.snippets.nil? -%>
+      <% @artefact.snippets.each do |snippets| -%>
+        <%= link_to snippets.name, snippets %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Devicerecordedat:</strong>
+    <%# if !@artefact.deviceRecordedAt.nil? -%>
+      <%# @artefact.deviceRecordedAt.each do |deviceRecordedAt| -%>
+        <%#= link_to deviceRecordedAt.name, deviceRecordedAt %>
+      <%# end -%>
+    <%# end -%>
+  </p>
+
+  <p>
+    <strong>Ingestedat:</strong>
+    <% if !@artefact.ingestedAt.nil? -%>
+      <% @artefact.ingestedAt.each do |ingestedAt| -%>
+        <%= link_to ingestedAt.name, ingestedAt %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Referencesabsolutedatetimes:</strong>
+    <% if !@artefact.referencesAbsoluteDatetimes.nil? -%>
+      <% @artefact.referencesAbsoluteDatetimes.each do |referencesAbsoluteDatetimes| -%>
+        <%= link_to referencesAbsoluteDatetimes.name, referencesAbsoluteDatetimes %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Refersto:</strong>
+    <% if !@artefact.refersTo.nil? -%>
+      <% @artefact.refersTo.each do |refersTo| -%>
+        <%= link_to refersTo.name, refersTo %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Isreferredtoby:</strong>
+    <% if !@artefact.isReferredToBy.nil? -%>
+      <% @artefact.isReferredToBy.each do |isReferredToBy| -%>
+        <%= link_to isReferredToBy.name, isReferredToBy %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Absolutedatetimeoccurredat:</strong>
+    <% if !@artefact.absoluteDatetimeOccurredAt.nil? -%>
+      <% @artefact.absoluteDatetimeOccurredAt.each do |absoluteDatetimeOccurredAt| -%>
+        <%= link_to absoluteDatetimeOccurredAt.name, absoluteDatetimeOccurredAt %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Absolutedatetimerecordedat:</strong>
+    <% if !@artefact.absoluteDatetimeRecordedAt.nil? -%>
+      <% @artefact.absoluteDatetimeRecordedAt.each do |absoluteDatetimeRecordedAt| -%>
+        <%= link_to absoluteDatetimeRecordedAt.name, "/absolute_date_nodes/#{absoluteDatetimeRecordedAt.id}" %>
+        <%#= link_to absoluteDatetimeRecordedAt.name, absoluteDatetimeRecordedAt %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Geospatialocurrededat:</strong>
+    <% if !@artefact.geospatialOccurrededAt.nil? -%>
+      <% @artefact.geospatialOccurrededAt.each do |geospatialOccurrededAt| -%>
+        <%= link_to geospatialOccurrededAt.name, geospatialOccurrededAt %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Geospatialrecordedat:</strong>
+    <% if !@artefact.geospatialRecordedAt.nil? -%>
+      <% @artefact.geospatialRecordedAt.each do |geospatialRecordedAt| -%>
+        <%= link_to geospatialRecordedAt.name, geospatialRecordedAt %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Editedat:</strong>
+    <% if !@artefact.editedAt.nil? -%>
+      <% @artefact.editedAt.each do |editedAt| -%>
+        <%= link_to editedAt.name, editedAt %>
+      <% end -%>
+    <% end -%>
+  </p>
+</div>

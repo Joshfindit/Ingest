@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Decades</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Decade</th>
+        <th>Datetimesemanticzoomout</th>
+        <th>Datetimesemanticzoomin</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @decades.limit(45).each do |decade| %>
+        <tr>
+
+
+          <td>
+              <%= link_to decade.name, decade %>
+          </td>
+
+          <td>
+            <%- if !decade.decade.nil? %>
+              <%= decade.decade %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !decade.datetimeSemanticZoomOut.empty? %>
+              <%- decade.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !decade.datetimeSemanticZoomIn.empty? %>
+              <%- decade.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+          <td><%= link_to 'Edit', edit_decade_path(decade) %></td>
+          <td><%= link_to 'Destroy', decade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Decade', new_decade_path %>
+</div>

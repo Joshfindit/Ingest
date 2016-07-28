@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Minutes</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Minute</th>
+        <th>Datetimesemanticzoomout</th>
+        <th>Datetimesemanticzoomin</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @minutes.limit(45).each do |minute| %>
+        <tr>
+
+
+          <td>
+              <%= link_to minute.name, minute %>
+          </td>
+
+          <td>
+            <%- if !minute.minute.nil? %>
+              <%= minute.minute %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !minute.datetimeSemanticZoomOut.empty? %>
+              <%- minute.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !minute.datetimeSemanticZoomIn.empty? %>
+              <%- minute.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+          <td><%= link_to 'Edit', edit_minute_path(minute) %></td>
+          <td><%= link_to 'Destroy', minute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Minute', new_minute_path %>
+</div>

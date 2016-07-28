@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui">
+  <a class="ui labeled icon button" href="<%= agents_path %>">
+    <i class="up arrow icon"></i>
+    List Agents
+  </a>
+  <a class="ui basic icon button" href="<%= edit_agent_path(@agent) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui vertical masthead center aligned segment">
+  <h1 class="ui header">Agent</h1>
+</div>
+
+<div class="ui text container">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @agent.name -%>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @agent.description -%>
+  </p>
+
+  <p>
+    <strong>Alias:</strong>
+    <%= @agent.alias -%>
+  </p>
+
+  <p>
+    <strong>Details:</strong>
+    <%= @agent.details -%>
+  </p>
+
+  <p>
+    <strong>Artefacts:</strong>
+    <% if !@agent.artefacts.nil? -%>
+      <% @agent.artefacts.each do |artefacts| -%>
+        <%= link_to artefacts.name, artefacts %>
+      <% end -%>
+    <% end -%>
+  </p>
+</div>

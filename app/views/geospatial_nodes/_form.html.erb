@@ -1,0 +1,88 @@
+<div class="ui text container">
+  <div class="ui form">
+    <%= form_for(@geospatial_node) do |f| %>
+      <% if @geospatial_node.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@geospatial_node.errors.count, "error") %> prohibited this geospatial_node from being saved:</h2>
+          <ul>
+            <% @geospatial_node.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
+            <div class="field">
+              <%= f.label :name %><br>
+              <%= f.text_field :name %>
+            </div>
+          
+  
+
+            <div class="field">
+              <%= f.label :latitude %><br>
+              <%= f.text_field :latitude %>
+            </div>
+          
+  
+
+            <div class="field">
+              <%= f.label :longitude %><br>
+              <%= f.text_field :longitude %>
+            </div>
+          
+  
+
+         
+            <div class="field">
+              <%= f.label :geospatialSemanticZoomOut_id %><br>
+              
+              # Edit the Class.all.sort to the Class name of the connected node (such as `GeospatialNode.all.sort`)
+              <%= f.collection_select(:geospatialSemanticZoomOut, Class.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select an Item", :selected => @geospatial_node.geospatialSemanticZoomOut.map(&:id)}, html_options = {:multiple => true, :class=>"search"}) %>
+            </div>
+
+  
+
+         
+            <div class="field">
+              <%= f.label :geospatialSemanticZoomIn_id %><br>
+              
+              # Edit the Class.all.sort to the Class name of the connected node (such as `GeospatialNode.all.sort`)
+              <%= f.collection_select(:geospatialSemanticZoomIn, Class.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select an Item", :selected => @geospatial_node.geospatialSemanticZoomIn.map(&:id)}, html_options = {:multiple => true, :class=>"search"}) %>
+            </div>
+
+  
+
+         
+            <div class="field">
+              <%= f.label :geospatialOccurredAt_id %><br>
+              
+              # Edit the Class.all.sort to the Class name of the connected node (such as `GeospatialNode.all.sort`)
+              <%= f.collection_select(:geospatialOccurredAt, Class.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select an Item", :selected => @geospatial_node.geospatialOccurredAt.map(&:id)}, html_options = {:multiple => true, :class=>"search"}) %>
+            </div>
+
+  
+
+         
+            <div class="field">
+              <%= f.label :geospatialRecordedAt_id %><br>
+              
+              # Edit the Class.all.sort to the Class name of the connected node (such as `GeospatialNode.all.sort`)
+              <%= f.collection_select(:geospatialRecordedAt, Class.all.sort { |a,b| a.name <=> b.name }, :id, :name, options = {:prompt => "Please Select an Item", :selected => @geospatial_node.geospatialRecordedAt.map(&:id)}, html_options = {:multiple => true, :class=>"search"}) %>
+            </div>
+
+  
+
+      <div class="actions">
+        <%= f.submit html_options = {:class=>"ui button"} %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+$('.search')
+  .dropdown()
+;
+</script>

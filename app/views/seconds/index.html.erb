@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Seconds</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Second</th>
+        <th>Unixtime</th>
+        <th>Datetimesemanticzoomout</th>
+        <th>Datetimesemanticzoomin</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @seconds.limit(45).each do |second| %>
+        <tr>
+
+
+          <td>
+              <%= link_to second.name, second %>
+          </td>
+
+          <td>
+            <%- if !second.second.nil? %>
+              <%= second.second %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !second.unixtime.nil? %>
+              <%= second.unixtime %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !second.datetimeSemanticZoomOut.empty? %>
+              <%- second.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !second.datetimeSemanticZoomIn.empty? %>
+              <%- second.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+          <td><%= link_to 'Edit', edit_second_path(second) %></td>
+          <td><%= link_to 'Destroy', second, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Second', new_second_path %>
+</div>

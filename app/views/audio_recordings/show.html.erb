@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui">
+  <a class="ui labeled icon button" href="<%= audio_recordings_path %>">
+    <i class="up arrow icon"></i>
+    List Audio Recordings
+  </a>
+  <a class="ui basic icon button" href="<%= edit_audio_recording_path(@audio_recording) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui vertical masthead center aligned segment">
+  <h1 class="ui header">Audio Recording</h1>
+</div>
+
+<div class="ui text container">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @audio_recording.name -%>
+  </p>
+
+  <p>
+    <strong>Md5atsave:</strong>
+    <%= @audio_recording.md5AtSave -%>
+  </p>
+
+  <p>
+    <strong>Waveformarray:</strong>
+    <%= @audio_recording.waveformArray -%>
+  </p>
+
+  <p>
+    <strong>Durationinseconds:</strong>
+    <%= @audio_recording.durationInSeconds -%>
+  </p>
+
+  <p>
+    <strong>Origionalartefactfragments:</strong>
+    <% if !@audio_recording.origionalArtefactFragments.nil? -%>
+      <% @audio_recording.origionalArtefactFragments.each do |origionalArtefactFragments| -%>
+        <%= link_to origionalArtefactFragments.name, origionalArtefactFragments %>
+      <% end -%>
+    <% end -%>
+  </p>
+</div>

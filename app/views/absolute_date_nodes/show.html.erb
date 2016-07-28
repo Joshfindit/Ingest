@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui">
+  <a class="ui labeled icon button" href="<%= absolute_date_nodes_path %>">
+    <i class="up arrow icon"></i>
+    List Absolute Date Nodes
+  </a>
+  <a class="ui basic icon button" href="<%= edit_absolute_date_node_path(@absolute_date_node) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui vertical masthead center aligned segment">
+  <h1 class="ui header">Absolute Date Node</h1>
+</div>
+
+<div class="ui text container">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @absolute_date_node.name -%>
+  </p>
+
+  <p>
+    <strong>Artefacts:</strong>
+    <% if !@absolute_date_node.artefacts.nil? -%>
+      <% @absolute_date_node.artefacts.each do |artefacts| -%>
+        <%= link_to artefacts.name, artefacts %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Datetimesemanticzoomout:</strong>
+    <% if !@absolute_date_node.datetimeSemanticZoomOut.nil? -%>
+      <%= link_to @absolute_date_node.datetimeSemanticZoomOut.name, "/absolute_date_nodes/#{@absolute_date_node.datetimeSemanticZoomOut.id}" %>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Datetimesemanticzoomin:</strong>
+    <% if !@absolute_date_node.datetimeSemanticZoomIn.nil? -%>
+      <% @absolute_date_node.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+        <%= link_to datetimeSemanticZoomIn.name, "/absolute_date_nodes/#{datetimeSemanticZoomIn.id}" %>
+      <% end -%>
+    <% end -%>
+  </p>
+</div>

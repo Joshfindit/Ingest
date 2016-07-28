@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui">
+  <a class="ui labeled icon button" href="<%= geospatial_nodes_path %>">
+    <i class="up arrow icon"></i>
+    List Geospatial Nodes
+  </a>
+  <a class="ui basic icon button" href="<%= edit_geospatial_node_path(@geospatial_node) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui vertical masthead center aligned segment">
+  <h1 class="ui header">Geospatial Node</h1>
+</div>
+
+<div class="ui text container">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @geospatial_node.name -%>
+  </p>
+
+  <p>
+    <strong>Latitude:</strong>
+    <%= @geospatial_node.latitude -%>
+  </p>
+
+  <p>
+    <strong>Longitude:</strong>
+    <%= @geospatial_node.longitude -%>
+  </p>
+
+  <p>
+    <strong>Geospatialsemanticzoomout:</strong>
+    <% if !@geospatial_node.geospatialSemanticZoomOut.nil? -%>
+      <%= link_to @geospatial_node.geospatialSemanticZoomOut.name, @geospatial_node.geospatialSemanticZoomOut %>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Geospatialsemanticzoomin:</strong>
+    <% if !@geospatial_node.geospatialSemanticZoomIn.nil? -%>
+      <% @geospatial_node.geospatialSemanticZoomIn.each do |geospatialSemanticZoomIn| -%>
+        <%= link_to geospatialSemanticZoomIn.name, geospatialSemanticZoomIn %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Geospatialoccurredat:</strong>
+    <% if !@geospatial_node.geospatialOccurredAt.nil? -%>
+      <% @geospatial_node.geospatialOccurredAt.each do |geospatialOccurredAt| -%>
+        <%= link_to geospatialOccurredAt.name, geospatialOccurredAt %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Geospatialrecordedat:</strong>
+    <% if !@geospatial_node.geospatialRecordedAt.nil? -%>
+      <% @geospatial_node.geospatialRecordedAt.each do |geospatialRecordedAt| -%>
+        <%= link_to geospatialRecordedAt.name, geospatialRecordedAt %>
+      <% end -%>
+    <% end -%>
+  </p>
+</div>

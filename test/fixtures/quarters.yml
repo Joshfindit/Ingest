@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  quarter: 1
+  datetimeSemanticZoomOut: one
+  datetimeSemanticZoomIn: one
+
+two:
+  name: MyString
+  quarter: 1
+  datetimeSemanticZoomOut: two
+  datetimeSemanticZoomIn: two

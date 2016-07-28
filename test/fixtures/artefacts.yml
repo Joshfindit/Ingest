@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  abstract: MyText
+  content: MyText
+  external_uuid: MyString
+  external_source: MyString
+  creator: one
+  tags: one
+  snippets: one
+  deviceRecordedAt: one
+  absoluteDatetimeOccurredAt: one
+  absoluteDatetimeRecordedAt: one
+  ingestedAt: one
+  referencesAbsoluteDatetimes: one
+  refersTo: one
+  isReferredToBy: one
+  absoluteDatetimeOccurredAt: one
+  absoluteDatetimeRecordedAt: one
+  geospatialOccurrededAt: one
+  geospatialRecordedAt: one
+  editedAt: one
+
+two:
+  name: MyString
+  abstract: MyText
+  content: MyText
+  external_uuid: MyString
+  external_source: MyString
+  creator: two
+  tags: two
+  snippets: two
+  deviceRecordedAt: two
+  absoluteDatetimeOccurredAt: two
+  absoluteDatetimeRecordedAt: two
+  ingestedAt: two
+  referencesAbsoluteDatetimes: two
+  refersTo: two
+  isReferredToBy: two
+  absoluteDatetimeOccurredAt: two
+  absoluteDatetimeRecordedAt: two
+  geospatialOccurrededAt: two
+  geospatialRecordedAt: two
+  editedAt: two

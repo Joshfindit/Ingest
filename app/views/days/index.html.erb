@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Days</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Day</th>
+        <th>Datetimesemanticzoomout</th>
+        <th>Datetimesemanticzoomin</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @days.limit(45).each do |day| %>
+        <tr>
+
+
+          <td>
+              <%= link_to day.name, day %>
+          </td>
+
+          <td>
+            <%- if !day.day.nil? %>
+              <%= day.day %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !day.datetimeSemanticZoomOut.empty? %>
+              <%- day.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !day.datetimeSemanticZoomIn.empty? %>
+              <%- day.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+          <td><%= link_to 'Edit', edit_day_path(day) %></td>
+          <td><%= link_to 'Destroy', day, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Day', new_day_path %>
+</div>

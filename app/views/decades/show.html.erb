@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui">
+  <a class="ui labeled icon button" href="<%= decades_path %>">
+    <i class="up arrow icon"></i>
+    List Decades
+  </a>
+  <a class="ui basic icon button" href="<%= edit_decade_path(@decade) %>">
+    <i class="edit icon"></i>
+    Edit
+  </a>
+</div>
+
+<div class="ui hidden divider"></div>
+
+<div class="ui vertical masthead center aligned segment">
+  <h1 class="ui header">Decade</h1>
+</div>
+
+<div class="ui text container">
+
+  <p>
+    <strong>Name:</strong>
+    <%= @decade.name -%>
+  </p>
+
+  <p>
+    <strong>Decade:</strong>
+    <%= @decade.decade -%>
+  </p>
+
+  <p>
+    <strong>Datetimesemanticzoomout:</strong>
+    <% if !@decade.datetimeSemanticZoomOut.nil? -%>
+      <% @decade.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+        <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+      <% end -%>
+    <% end -%>
+  </p>
+
+  <p>
+    <strong>Datetimesemanticzoomin:</strong>
+    <% if !@decade.datetimeSemanticZoomIn.nil? -%>
+      <% @decade.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+        <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+      <% end -%>
+    <% end -%>
+  </p>
+</div>

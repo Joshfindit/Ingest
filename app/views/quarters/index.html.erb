@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<div class="ui very padded container ">
+  <h1>Quarters</h1>
+
+  <table class="ui very basic celled table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quarter</th>
+        <th>Datetimesemanticzoomout</th>
+        <th>Datetimesemanticzoomin</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @quarters.limit(45).each do |quarter| %>
+        <tr>
+
+
+          <td>
+              <%= link_to quarter.name, quarter %>
+          </td>
+
+          <td>
+            <%- if !quarter.quarter.nil? %>
+              <%= quarter.quarter %>
+            <%- end %>
+          </td>
+
+          <td>
+            <%- if !quarter.datetimeSemanticZoomOut.empty? %>
+              <%- quarter.datetimeSemanticZoomOut.each do |datetimeSemanticZoomOut| -%>
+                <%= link_to datetimeSemanticZoomOut.name, datetimeSemanticZoomOut %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+
+          <td>
+            <%- if !quarter.datetimeSemanticZoomIn.empty? %>
+              <%- quarter.datetimeSemanticZoomIn.each do |datetimeSemanticZoomIn| -%>
+                <%= link_to datetimeSemanticZoomIn.name, datetimeSemanticZoomIn %>
+              <%- end -%>
+            <%- end -%>
+          </td>
+          <td><%= link_to 'Edit', edit_quarter_path(quarter) %></td>
+          <td><%= link_to 'Destroy', quarter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Quarter', new_quarter_path %>
+</div>
