@@ -12,8 +12,8 @@ Iian Neill's work, in one spark both shed my ideas of how computers 'have' to do
 ### The structure of the system follows these general principles
 
 1. Everything is perspective
-2. Perspective can only be true at a certain time
-3. We have to accept our judgements in order to move past them and allow others to reach thier own understanding
+2. Perspective can only be stated at a certain time
+3. As much as possible, allow others to make thier own judgements
 
 - Artefacts hold perspective, and can document the understanding of relationships
 - Agents are any entity which is capable of affecting change (a person, a family, a political movement, and so-on)
