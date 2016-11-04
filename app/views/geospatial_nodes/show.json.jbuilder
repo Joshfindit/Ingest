@@ -1,1 +1,1 @@
-json.extract! @geospatial_node, :id, :name, :latitude, :longitude, :geospatialSemanticZoomOut_id, :geospatialSemanticZoomIn_id, :geospatialOccurredAt_id, :geospatialRecordedAt_id, :created_at, :updated_at
+json.extract! @geospatial_node, :id, :name, :latitude, :longitude, :geospatialSemanticZoomOut, :geospatialSemanticZoomIn, :geospatialOccurredAt, :geospatialRecordedAt, :created_at, :updated_at
